@@ -7,7 +7,7 @@ import InstallPrompt from './components/InstallPrompt'
 
 export default function App() {
   return (
-    <BrowserRouter basename={import.meta.env.PROD ? '/MY-PDCA-' : '/'}>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <div className="min-h-screen bg-gray-50">
         <Routes>
           <Route path="/" element={<HomePage />} />
