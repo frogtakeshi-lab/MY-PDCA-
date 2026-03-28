@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#2563eb"/>
+  <!-- 円形矢印（PDCAサイクルのイメージ） -->
+  <path d="M256 96 C167 96 96 167 96 256 C96 345 167 416 256 416 C345 416 416 345 416 256"
+    fill="none" stroke="white" stroke-width="40" stroke-linecap="round"/>
+  <!-- 矢印の先端 -->
+  <polygon points="390,210 440,256 390,302" fill="white"/>
+  <!-- 中央の文字 -->
+  <text x="256" y="275" text-anchor="middle" font-family="system-ui,sans-serif"
+    font-size="96" font-weight="700" fill="white">P</text>
+</svg>

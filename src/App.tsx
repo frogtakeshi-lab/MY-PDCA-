@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage'
 import GenrePage from './pages/GenrePage'
 import CyclePage from './pages/CyclePage'
 import SettingsPage from './pages/SettingsPage'
+import InstallPrompt from './components/InstallPrompt'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="/cycles/:id" element={<CyclePage />} />
           <Route path="/settings" element={<SettingsPage />} />
         </Routes>
+        <InstallPrompt />
       </div>
     </BrowserRouter>
   )
