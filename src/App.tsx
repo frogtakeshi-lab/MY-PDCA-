@@ -7,7 +7,7 @@ import InstallPrompt from './components/InstallPrompt'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/MY-PDCA-">
       <div className="min-h-screen bg-gray-50">
         <Routes>
           <Route path="/" element={<HomePage />} />
