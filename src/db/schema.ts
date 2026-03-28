@@ -15,6 +15,7 @@ export interface Cycle {
   title: string
   weekStart: string   // ISO date string (月曜日の日付, e.g. "2026-03-23")
   status: 'active' | 'completed'
+  memo: string        // サイクル総合メモ
   createdAt: Date
 }
 
@@ -71,6 +72,19 @@ class PdcaDatabase extends Dexie {
       doRecords: '++id, cycleId, date',
       checks:    '++id, cycleId, updatedAt',
       acts:      '++id, cycleId, updatedAt',
+    })
+    // v2: Cycle に memo フィールド追加
+    this.version(2).stores({
+      genres:    '++id, name, createdAt',
+      cycles:    '++id, genreId, weekStart, status, createdAt',
+      plans:     '++id, cycleId, updatedAt',
+      doRecords: '++id, cycleId, date',
+      checks:    '++id, cycleId, updatedAt',
+      acts:      '++id, cycleId, updatedAt',
+    }).upgrade(tx => {
+      return tx.table('cycles').toCollection().modify(cycle => {
+        if (cycle.memo === undefined) cycle.memo = ''
+      })
     })
   }
 }

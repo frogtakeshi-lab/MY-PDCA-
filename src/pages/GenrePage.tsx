@@ -25,6 +25,7 @@ export default function GenrePage() {
       title,
       weekStart,
       status: 'active',
+      memo: '',
       createdAt: new Date(),
     })
     setModalOpen(false)

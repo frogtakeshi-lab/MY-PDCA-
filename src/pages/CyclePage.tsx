@@ -6,10 +6,11 @@ import PlanTab from '../components/tabs/PlanTab'
 import DoTab from '../components/tabs/DoTab'
 import CheckTab from '../components/tabs/CheckTab'
 import ActTab from '../components/tabs/ActTab'
+import MemoTab from '../components/tabs/MemoTab'
 import { db } from '../db/schema'
 import { formatWeekLabel, getColorClasses } from '../lib/utils'
 
-const TABS = ['Plan', 'Do', 'Check', 'Act'] as const
+const TABS = ['Plan', 'Do', 'Check', 'Act', 'メモ'] as const
 type Tab = typeof TABS[number]
 
 export default function CyclePage() {
@@ -29,7 +30,6 @@ export default function CyclePage() {
 
   return (
     <Layout title={cycle.title} showBack>
-      {/* サイクル情報バー */}
       <div className={`${colors.light} px-4 py-2 flex items-center gap-2`}>
         <span className={`w-2 h-2 rounded-full ${colors.bg}`} />
         <span className={`text-xs font-medium ${colors.text}`}>{genre.name}</span>
@@ -39,13 +39,13 @@ export default function CyclePage() {
         )}
       </div>
 
-      {/* タブバー */}
-      <div className="flex border-b border-gray-200 bg-white sticky top-[57px] z-10">
+      {/* タブバー（横スクロール対応） */}
+      <div className="flex border-b border-gray-200 bg-white sticky top-[57px] z-10 overflow-x-auto">
         {TABS.map(tab => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`flex-1 py-3 text-sm font-semibold transition-colors ${
+            className={`flex-shrink-0 px-4 py-3 text-sm font-semibold transition-colors ${
               activeTab === tab
                 ? `border-b-2 ${colors.text} border-current`
                 : 'text-gray-400'
@@ -56,12 +56,12 @@ export default function CyclePage() {
         ))}
       </div>
 
-      {/* タブコンテンツ */}
       <div className="p-4">
         {activeTab === 'Plan'  && <PlanTab  cycleId={cycleId} />}
         {activeTab === 'Do'    && <DoTab    cycleId={cycleId} weekStart={cycle.weekStart} />}
         {activeTab === 'Check' && <CheckTab cycleId={cycleId} />}
         {activeTab === 'Act'   && <ActTab   cycleId={cycleId} />}
+        {activeTab === 'メモ'  && <MemoTab  cycleId={cycleId} />}
       </div>
     </Layout>
   )
