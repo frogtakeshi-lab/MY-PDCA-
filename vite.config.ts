@@ -21,7 +21,8 @@ export default defineConfig({
         background_color: '#f9fafb',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
+        start_url: '/MY-PDCA-/',
+        scope: '/MY-PDCA-/',
         lang: 'ja',
         icons: [
           {
